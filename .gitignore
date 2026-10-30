@@ -1,41 +1,74 @@
+# ==============================================================================
+# AHEAD — Git Ignore Rules (Root Monorepo)
+# ==============================================================================
+
 # Dependencies
 node_modules/
+*/node_modules/
+.pnpm-store/
 .pnp
 .pnp.js
 
-# Environment variables
+# Environment variables & secrets (CRITICAL: Never commit credentials)
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env.*
+!.env.example
+*.env
+*.env.*
+!.env*.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
 
-# Next.js
+# Next.js build artifacts & caches
 frontend/.next/
 frontend/out/
 frontend/build/
-
-# Build outputs
+.next/
+out/
+build/
+dist/
 backend/dist/
 backend/build/
 
-# Logs
+# Testing & Coverage
+coverage/
+*/coverage/
+.nyc_output/
+*.lcov
+
+# Debug & Execution logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 *.log
+*.tsbuildinfo
 
-# OS
+# OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+[Dd]esktop.ini
 
-# IDE
-.vscode/
+# IDE & Editor files
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 .idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-# Testing
-coverage/
-.nyc_output/
-
-# Vercel
-.vercel
+# Vercel & Cloud deployment local state
+.vercel/
